@@ -1,0 +1,30 @@
+# For details on buf.yaml configuration, visit https://buf.build/docs/configuration/v2/buf-yaml
+version: v2
+lint:
+  use:
+    - STANDARD
+    - SERVICE_SUFFIX 
+    - FILE_LOWER_SNAKE_CASE
+    - PACKAGE_SAME_GO_PACKAGE
+    - PACKAGE_VERSION_SUFFIX
+    - SERVICE_PASCAL_CASE
+    - PACKAGE_NO_IMPORT_CYCLE
+  except:
+    - PACKAGE_DIRECTORY_MATCH
+  service_suffix: Service
+  rpc_allow_same_request_response: false
+  rpc_allow_google_protobuf_empty_requests: false
+  rpc_allow_google_protobuf_empty_responses: false
+
+
+breaking:
+  use:
+    - FILE
+
+modules:
+  - path: proto
+    name: buf.build/anicine/api
+    
+deps:
+  - buf.build/googleapis/googleapis
+  - buf.build/grpc-ecosystem/grpc-gateway
